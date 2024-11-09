@@ -31,6 +31,7 @@
             background-image: url('discord_pfp.png'); 
             background-size: cover;
             background-position: center;
+            transition: background-image 0.7s ease;
         }
         h2 {
             font-size: 1.8em;
@@ -63,14 +64,28 @@
 </head>
 <body>
     <div class="profile-container">
-        <div class="profile-picture"></div>
+        <div class="profile-picture" id="profile-picture"></div>
         <h2>olegus</h2>
         <h5>@_yw2</h5>
-        <p>I don't accept friend requests and message requests unless I know you. Please ping me in a common server if you need anything! </p>
+        <p>I don't accept friend requests and message requests unless I know you. Please ping me in a common server if you need anything!</p>
         <div class="badge-container">
             <div class="badge nitro-badge" title="Nitro depuis le 8 janvier 2023"></div>
             <div class="badge quest-badge" title="A complété une quête"></div>
         </div>
     </div>
+
+    <script>
+        const profilePicture = document.getElementById('profile-picture');
+        const originalImage = 'discord_pfp.png';
+        const newImage = 'other_image.png';
+
+        profilePicture.addEventListener('click', () => {
+            profilePicture.style.backgroundImage = `url('${newImage}')`;
+
+            setTimeout(() => {
+                profilePicture.style.backgroundImage = `url('${originalImage}')`;
+            }, 700);
+        });
+    </script>
 </body>
 </html>
