@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>olegus - Avis</title>
+    <link rel="icon" href="discord_pfp.png" type="image/png"> 
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .star {
+            font-size: 30px;
+            color: #bbb;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .star:hover, .star.selected {
+            color: #ffcc00;
+        }
+
+        .reviews-container {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .review {
+            background-color: #1c1c3d;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+        }
+
+        .review h4 {
+            color: #00eaff;
+            margin-bottom: 10px;
+        }
+
+        .review .stars {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .review p {
+            color: #ddd;
+        }
+
+        .submit-review {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .submit-review input, .submit-review textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            background-color: #2b2b55;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-review textarea:focus, .submit-review input:focus {
+            background-color: #353566;
+        }
+
+        .submit-review button {
+            padding: 10px 20px;
+            background-color: #00f2ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-review button:hover {
+            background-color: #00ccff;
+        }
+
+        .stats {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="star-rating" id="star-rating">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+    </div>
+
+    <div class="submit-review">
+        <input type="text" id="pseudo" placeholder="Entrez votre pseudo" />
+        <textarea id="review-text" placeholder="Écrivez un avis..." rows="4"></textarea>
+        <button onclick="submitReview()">Soumettre l'avis</button>
+    </div>
+
+    <div class="reviews-container" id="reviews-container">
+    </div>
+
+    <div class="stats">
+        <h3 id="review-count">Nombre d'avis : 0</h3>
+        <h3 id="average-rating">Note moyenne : 0 étoiles</h3>
+    </div>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        let selectedRating = 0;
+        let reviews = []; 
+        let totalRating = 0; 
+        let reviewCount = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-value');
+                updateStarSelection();
+            });
+        });
+
+        function updateStarSelection() {
+            stars.forEach(star => {
+                if (star.getAttribute('data-value') <= selectedRating) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+
+        function submitReview() {
+            const pseudo = document.getElementById('pseudo').value.trim();
+            const reviewText = document.getElementById('review-text').value.trim();
+
+            if (!pseudo || !reviewText || selectedRating === 0) {
+                alert("Veuillez entrer un pseudo, un avis et choisir une note.");
+                return;
+            }
+
+            reviews.push({ pseudo, reviewText, rating: selectedRating });
+            totalRating += selectedRating; 
+            reviewCount++; 
+
+            const averageRating = (totalRating / reviewCount).toFixed(2);
+
+            document.getElementById('review-count').textContent = `Nombre d'avis : ${reviewCount}`;
+            document.getElementById('average-rating').textContent = `Note moyenne : ${averageRating} étoiles`;
+
+            const reviewContainer = document.getElementById('reviews-container');
+            const review = document.createElement('div');
+            review.classList.add('review');
+
+            const starDisplay = document.createElement('div');
+            starDisplay.classList.add('stars');
+            for (let i = 0; i < selectedRating; i++) {
+                starDisplay.innerHTML += '★';
+            }
+
+            review.innerHTML = `
+                <h4>${pseudo}</h4>
+                <div class="stars">${starDisplay.innerHTML}</div>
+                <p>${reviewText}</p>
+            `;
+
+            reviewContainer.appendChild(review);
+
+            document.getElementById('review-text').value = '';
+            document.getElementById('pseudo').value = '';
+            updateStarSelection();
+
+            sendReviewToDiscord(pseudo, reviewText, selectedRating);
+        }
+
+        function sendReviewToDiscord(pseudo, reviewText, rating) {
+            const webhookURL = 'https://discord.com/api/webhooks/1304845619965198369/X4G1YsXnZaT-iumFj4LkAmLAZaYRk4rdmYRUsvzUQHUtLp9Yr5nAVoWqpAY06xLQvUbl'; // Remplacez par l'URL de votre webhook Discord
+
+            const message = {
+                content: `Nouveau commentaire de ${pseudo} :\n\n**Note :** ${rating} étoiles\n**Avis :** ${reviewText}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(message)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Avis envoyé au Discord:', data))
+            .catch(error => console.error('Erreur d\'envoi au Discord:', error));
+        }
+    </script>
+
+    <h5>© 2024 olegus - Tous droits réservés.</h5>
+</body>
+</html>
