@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>olegus - Autre</title>
+    <title>Autre Projet</title>
     <link rel="icon" href="discord_pfp.png" type="image/png">
 
     <style>
         body {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             height: 100vh;
             margin: 0;
             background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
@@ -18,12 +18,131 @@
             font-family: Arial, sans-serif;
             flex-direction: column;
             gap: 40px;
+            padding: 20px;
         }
 
         .project-container {
             position: relative;
             width: 500px;
-            height: 400px;
+            height: 450px;
             background-color: rgba(0, 255, 153, 0.2);
             border-radius: 50px;
-            box-shadow: 0 0 20px rgba(0, 255, 
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .project-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .project-description {
+            font-size: 1.1em;
+            margin: 15px 0;
+            color: #fff;
+        }
+
+        .project-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #00eaff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-button:hover {
+            background-color: #00ccff;
+        }
+
+        /* Styling for the three cases */
+        .cases-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .case {
+            width: 30%;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.4);
+        }
+
+        .case-description {
+            font-size: 1em;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .case-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00eaff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="project-container">
+        <img src="realm-games.png" alt="Realm Games">
+        <div class="project-description">
+            Ce projet est un jeu de rôle en ligne avec des éléments de stratégie. Rejoignez-nous et découvrez l'aventure.
+        </div>
+        <a href="https://example.com" class="project-button" target="_blank">Voir le projet</a>
+    </div>
+
+    <div class="cases-container">
+        <div class="case">
+            <div class="case-title">Projet 1</div>
+            <div class="case-description">
+                ???
+            </div>
+        </div>
+        <div class="case">
+            <div class="case-title">Projet 2</div>
+            <div class="case-description">
+                ???
+            </div>
+        </div>
+        <div class="case">
+            <div class="case-title">Projet 3</div>
+            <div class="case-description">
+                ???
+            </div>
+        </div>
+    </div>
+
+    <div class="project-container">
+        <img src="???-image.png" alt="Projet Inconnu">
+        <div class="project-description">
+            Description à venir pour ce projet mystérieux. Restez à l'écoute !
+        </div>
+        <a href="" class="project-button" target="_blank">Voir le projet</a>
+    </div>
+
+    <div class="project-container">
+        <img src="???-image.png" alt="Projet Inconnu">
+        <div class="project-description">
+            Ce projet est encore en développement. Plus de détails à venir.
+        </div>
+        <a href="" class="project-button" target="_blank">Voir le projet</a>
+    </div>
+
+</body>
+</html>
