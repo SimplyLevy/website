@@ -33,6 +33,13 @@
             color: #00eaff;
             margin-bottom: 1em;
             text-shadow: 0 0 10px #00ccff, 0 0 20px #00eeff;
+            display: flex;
+            align-items: center;
+        }
+        h1 img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
         }
         .buttons {
             display: flex;
@@ -62,21 +69,14 @@
         #youtube { background-color: #FF0000; }
         #discord { background-color: #5865F2; }
         #portfolio { background-color: #00f2ff; }
-        .view-count {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            color: #fff;
-        }
     </style>
 </head>
 <body>
     <div class="profile-picture"></div>
-    <h1>olegus</h1>
+    <h1>
+        <img src="discord_pfp.png" alt="Logo">
+        olegus
+    </h1>
     <div class="buttons">
         <a id="twitter" href="https://x.com/ol3gus" class="button" target="_blank">
             <img src="twitter-icon.png" alt="Twitter"> X
@@ -91,20 +91,5 @@
             <img src="discord_pfp.png" alt="Portfolio"> Portfolio
         </a>
     </div>
-
-    <div class="view-count" id="view-count">Vues: 0</div>
-
-    <script>
-        let viewCount = 0;
-
-        function updateViewCount() {
-            viewCount++; 
-            document.getElementById("view-count").textContent = `Vues: ${viewCount}`;
-        }
-
-        setInterval(updateViewCount, 30000);
-
-        updateViewCount();
-    </script>
 </body>
 </html>
