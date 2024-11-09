@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>olegus - Profil Discord</title>
     <style>
         body {
             display: flex;
@@ -14,68 +14,63 @@
             background-color: #2C2F33;
             color: #fff;
             margin: 0;
-            flex-direction: column;
         }
-        .coming-soon {
-            font-size: 2.5em;
-            color: #00d9ff;
-            animation: fadeInOut 2s infinite;
-            margin-bottom: 20px;
-        }
-        @keyframes fadeInOut {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-        .quote {
-            font-size: 1.5em;
-            color: #fff;
-            text-align: center;
-            margin-top: 20px;
-            font-style: italic;
-            white-space: nowrap;
-            overflow: hidden;
-            width: 0;
-            animation: typewriter 5s steps(50) 1s forwards, erase 5s steps(50) 6s forwards;
-        }
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes erase {
-            from { width: 100%; }
-            to { width: 0; }
-        }
-        .view-count {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px 20px;
+        .profile-container {
+            width: 400px;
+            background-color: #36393F;
             border-radius: 8px;
-            font-size: 1.2em;
-            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-image: url('discord_pfp.png'); 
+            background-size: cover;
+            background-position: center;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+        h5 {
+            font-size: 1em;
+            color: #aaa;
+            margin: 5px 0 15px;
+        }
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-size: cover;
+        }
+        .nitro-badge { 
+            background-image: url('nitro-badge.png');
+        }
+        .quest-badge { 
+            background-image: url('quest-badge.png'); 
         }
     </style>
 </head>
 <body>
-    <div class="coming-soon">Arrive Plutard...</div>
-    <div class="quote">
-        "Patience est la plus héroïque des vertus, précisément parce qu'elle n'a pas la moindre apparence d'héroïsme." – Giacomo Leopardi
+    <div class="profile-container">
+        <div class="profile-picture"></div>
+        <h2>olegus</h2>
+        <h5>@_yw2</h5>
+        <p>I don't accept friend requests and message requests unless I know you. Please ping me in a common server if you need anything! </p>
+        <div class="badge-container">
+            <div class="badge nitro-badge" title="Nitro depuis le 8 janvier 2023"></div>
+            <div class="badge quest-badge" title="A complété une quête"></div>
+        </div>
     </div>
-
-    <div class="view-count" id="view-count">Vues: 0</div>
-
-    <script>
-        let viewCount = 0;
-
-        function updateViewCount() {
-            viewCount++;
-            document.getElementById("view-count").textContent = `Vues: ${viewCount}`;
-        }
-
-        setInterval(updateViewCount, 30000);
-        updateViewCount();
-    </script>
 </body>
 </html>
