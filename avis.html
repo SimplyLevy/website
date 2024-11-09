@@ -134,9 +134,12 @@
     <script>
         const stars = document.querySelectorAll('.star');
         let selectedRating = 0;
-        let reviews = []; 
-        let totalRating = 0; 
-        let reviewCount = 0;
+
+        let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+        let totalRating = parseInt(localStorage.getItem('totalRating')) || 0;
+        let reviewCount = parseInt(localStorage.getItem('reviewCount')) || 0;
+
+        updateStats();
 
         stars.forEach(star => {
             star.addEventListener('click', () => {
@@ -155,6 +158,12 @@
             });
         }
 
+        function updateStats() {
+            const averageRating = reviewCount > 0 ? (totalRating / reviewCount).toFixed(2) : 0;
+            document.getElementById('review-count').textContent = `Nombre d'avis : ${reviewCount}`;
+            document.getElementById('average-rating').textContent = `Note moyenne : ${averageRating} étoiles`;
+        }
+
         function submitReview() {
             const pseudo = document.getElementById('pseudo').value.trim();
             const reviewText = document.getElementById('review-text').value.trim();
@@ -168,10 +177,11 @@
             totalRating += selectedRating; 
             reviewCount++; 
 
-            const averageRating = (totalRating / reviewCount).toFixed(2);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+            localStorage.setItem('totalRating', totalRating);
+            localStorage.setItem('reviewCount', reviewCount);
 
-            document.getElementById('review-count').textContent = `Nombre d'avis : ${reviewCount}`;
-            document.getElementById('average-rating').textContent = `Note moyenne : ${averageRating} étoiles`;
+            updateStats();
 
             const reviewContainer = document.getElementById('reviews-container');
             const review = document.createElement('div');
