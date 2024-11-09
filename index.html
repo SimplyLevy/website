@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>olegus - Accueil</title>
-    <link rel="icon" href="discord_pfp.png" type="image/png"> 
+    <link rel="icon" href="discord_pfp.png" type="image/png">
 
     <style>
         body {
@@ -29,6 +29,7 @@
             border: 3px solid #00ff99;
             margin-bottom: 20px;
             box-shadow: 0 0 15px #00ff99, 0 0 25px #00ff99;
+            transition: background-image 0.7s ease;
         }
         h1 {
             font-size: 3em;
@@ -74,10 +75,28 @@
         #portfolio { background-color: #00f2ff; }
         #autre { background-color: #6a5acd; }
         #commentaire { background-color: #f39c12; }
+
+        /* Heart styles */
+        .heart {
+            font-size: 50px;
+            color: #bbb;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .heart.liked {
+            color: #ff3366;
+        }
+
+        .heart-count {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
-    <div class="profile-picture"></div>
+    <div class="profile-picture" id="profile-picture"></div>
     <div class="buttons">
         <a id="twitter" href="https://x.com/ol3gus" class="button" target="_blank">
             <img src="twitter-icon.png" alt="Twitter"> X
@@ -101,6 +120,21 @@
             <img src="star-icon.png" alt="Avis"> Avis
         </a>
     </div>
-    <h5>© 2024 olegus - Tous droits réservés. </h5>
+
+    <h5>© 2024 olegus - Tous droits réservés.</h5>
+
+    <script>
+        const profilePicture = document.getElementById('profile-picture');
+        const originalImage = 'discord_pfp.png';
+        const newImage = 'other_image.png';
+
+        profilePicture.addEventListener('click', () => {
+            profilePicture.style.backgroundImage = `url('${newImage}')`;
+
+            setTimeout(() => {
+                profilePicture.style.backgroundImage = `url('${originalImage}')`;
+            }, 700);
+        });
+    </script>
 </body>
 </html>
