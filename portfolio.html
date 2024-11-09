@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #2C2F33;
+            color: #fff;
+            margin: 0;
+            flex-direction: column;
+        }
+        .coming-soon {
+            font-size: 2.5em;
+            color: #00d9ff;
+            animation: fadeInOut 2s infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .quote {
+            font-size: 1.5em;
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typewriter 6s steps(50) 1s forwards, erase 5s steps(50) 6s forwards;
+        }
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes erase {
+            from { width: 100%; }
+            to { width: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="coming-soon">Arrive Plutard...</div>
+    <div class="quote">
+        "Patience est la plus héroïque des vertus, précisément parce qu'elle n'a pas la moindre apparence d'héroïsme." 
+        – Giacomo Leopardi
+    </div>
+</body>
+</html>
