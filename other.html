@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autre Projet</title>
+    <link rel="icon" href="discord_pfp.png" type="image/png">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .project-container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            background-color: rgba(0, 255, 153, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
+            overflow: hidden;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .project-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .project-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #00eaff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-button:hover {
+            background-color: #00ccff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="project-container">
+        <img src="project-image.jpg" alt="Mon projet">
+        <a href="https://example.com" class="project-button" target="_blank">Voir le projet</a>
+    </div>
+
+</body>
+</html>
