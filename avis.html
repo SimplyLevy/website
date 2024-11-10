@@ -174,7 +174,7 @@
             }
 
             reviews.push({ pseudo, reviewText, rating: selectedRating });
-            totalRating += selectedRating; 
+            totalRating += parseInt(selectedRating); 
             reviewCount++; 
 
             localStorage.setItem('reviews', JSON.stringify(reviews));
@@ -205,14 +205,14 @@
             document.getElementById('pseudo').value = '';
             updateStarSelection();
 
-            sendReviewToDiscord(pseudo, reviewText, selectedRating);
+            sendReviewToDiscord(pseudo, reviewText, starDisplay.innerHTML);
         }
 
-        function sendReviewToDiscord(pseudo, reviewText, rating) {
-            const webhookURL = 'https://discord.com/api/webhooks/1304845619965198369/X4G1YsXnZaT-iumFj4LkAmLAZaYRk4rdmYRUsvzUQHUtLp9Yr5nAVoWqpAY06xLQvUbl'; // Remplacez par l'URL de votre webhook Discord
+        function sendReviewToDiscord(pseudo, reviewText, starSymbols) {
+            const webhookURL = 'https://discord.com/api/webhooks/1304845619965198369/X4G1YsXnZaT-iumFj4LkAmLAZaYRk4rdmYRUsvzUQHUtLp9Yr5nAVoWqpAY06xLQvUbl'; 
 
             const message = {
-                content: `Nouveau commentaire de ${pseudo} :\n\n**Note :** ${rating} étoiles\n**Avis :** ${reviewText}`
+                content: `Nouveau commentaire de ${pseudo} :\n\n**Note :** ${starSymbols}\n**Avis :** ${reviewText}`
             };
 
             fetch(webhookURL, {
