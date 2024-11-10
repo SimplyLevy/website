@@ -10,7 +10,6 @@
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             height: 100vh;
             font-family: Arial, sans-serif;
@@ -19,34 +18,22 @@
             margin: 0;
             overflow: hidden;
         }
-        .profile-picture {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-image: url('discord_pfp.png');
-            background-size: cover;
-            background-position: center;
-            border: 3px solid #00ff99;
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px #00ff99, 0 0 25px #00ff99;
-            transition: background-image 0.7s ease;
-        }
-        h1 {
-            font-size: 3em;
-            color: #00eaff;
-            margin-bottom: 1em;
-            text-shadow: 0 0 10px #00ccff, 0 0 20px #00eeff;
+        .header {
+            width: 100%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-        }
-        h1 img {
-            width: 50px;
-            height: 50px;
-            margin-right: 15px;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .buttons {
             display: flex;
             gap: 20px;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
         }
         .button {
             display: flex;
@@ -75,50 +62,72 @@
         #portfolio { background-color: #00f2ff; }
         #autre { background-color: #6a5acd; }
         #commentaire { background-color: #f39c12; }
-
-        /* Heart styles */
-        .heart {
-            font-size: 50px;
-            color: #bbb;
-            cursor: pointer;
-            transition: color 0.3s ease;
+        
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: 40px;
         }
-
-        .heart.liked {
-            color: #ff3366;
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-image: url('discord_pfp.png');
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #00ff99;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px #00ff99, 0 0 25px #00ff99;
+            transition: background-image 0.7s ease;
         }
-
-        .heart-count {
-            font-size: 1.5em;
-            margin-top: 20px;
-            color: #fff;
+        h1 {
+            font-size: 3em;
+            color: #00eaff;
+            text-shadow: 0 0 10px #00ccff, 0 0 20px #00eeff;
+            margin-bottom: 0.5em;
+        }
+        .description {
+            font-size: 1.2em;
+            color: #ddd;
+            text-align: center;
+            max-width: 80%;
         }
     </style>
 </head>
 <body>
-    <div class="profile-picture" id="profile-picture"></div>
-    <div class="buttons">
-        <a id="twitter" href="https://x.com/ol3gus" class="button" target="_blank">
-            <img src="twitter-icon.png" alt="Twitter"> X
-        </a>
-        <a id="youtube" href="https://www.youtube.com/@olegus_-" class="button" target="_blank">
-            <img src="youtube-icon.png" alt="YouTube"> YouTube
-        </a>
-        <a id="discord" href="profile.html" class="button" target="_blank">
-            <img src="discord-icon.png" alt="Discord"> Discord
-        </a>
-        <a id="github" href="https://github.com/ol3gus" class="button" target="_blank">
-            <img src="github-icon.png" alt="GitHub"> GitHub
-        </a>
-        <a id="portfolio" href="portfolio.html" class="button" target="_blank">
-            <img src="discord_pfp.png" alt="Portfolio"> Portfolio
-        </a>
-        <a id="autre" href="other.html" class="button" target="_blank">
-            <img src="other-icon.png" alt="Projets"> Projets
-        </a>
-        <a id="Avis" href="avis.html" class="button" target="_blank">
-            <img src="star-icon.png" alt="Avis"> Avis
-        </a>
+    <header class="header">
+        <div class="buttons">
+            <a id="twitter" href="https://x.com/ol3gus" class="button" target="_blank">
+                <img src="twitter-icon.png" alt="Twitter"> X
+            </a>
+            <a id="youtube" href="https://www.youtube.com/@olegus_-" class="button" target="_blank">
+                <img src="youtube-icon.png" alt="YouTube"> YouTube
+            </a>
+            <a id="discord" href="profile.html" class="button" target="_blank">
+                <img src="discord-icon.png" alt="Discord"> Discord
+            </a>
+            <a id="github" href="https://github.com/ol3gus" class="button" target="_blank">
+                <img src="github-icon.png" alt="GitHub"> GitHub
+            </a>
+            <a id="portfolio" href="portfolio.html" class="button" target="_blank">
+                <img src="discord_pfp.png" alt="Portfolio"> Portfolio
+            </a>
+            <a id="autre" href="other.html" class="button" target="_blank">
+                <img src="other-icon.png" alt="Projets"> Projets
+            </a>
+            <a id="Avis" href="avis.html" class="button" target="_blank">
+                <img src="star-icon.png" alt="Avis"> Avis
+            </a>
+        </div>
+        <img src="realm-game.png" alt="Logo" class="logo">
+    </header>
+
+    <div class="profile-section">
+        <div class="profile-picture" id="profile-picture"></div>
+        <h1>olegus</h1>
+        <p class="description">J'ai 15 ans et vous pouvez regardez mes projets et mon portofolio sur les bouttons ci-dessus.</p>
     </div>
 
     <h5>© 2024 olegus - Tous droits réservés.</h5>
