@@ -37,17 +37,37 @@
             align-items: center;
         }
 
-        .project-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 20px;
+        .cases-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
         }
 
-        .project-description {
-            font-size: 1.1em;
-            margin: 15px 0;
+        .case {
+            width: 30%;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .case-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00eaff;
+        }
+
+        .case-description {
+            font-size: 1em;
             color: #fff;
+            margin-top: 10px;
         }
 
         .project-button {
@@ -66,37 +86,11 @@
             background-color: #00ccff;
         }
 
-        .cases-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            width: 100%;
-        }
-
-        .case {
-            width: 30%;
-            height: 300px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0, 255, 153, 0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .case-description {
-            font-size: 1em;
-            color: #fff;
-            margin-top: 10px;
-        }
-
-        .case-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #00eaff;
+        .case img {
+            width: 100%; 
+            max-height: 200px; 
+            object-fit: cover; 
+            border-radius: 8px;
         }
     </style>
 </head>
