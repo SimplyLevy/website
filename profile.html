@@ -28,7 +28,6 @@
             height: 100px;
             border-radius: 50%;
             margin: 0 auto 15px;
-            background-image: url('angry.png'); 
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -62,10 +61,10 @@
             background-image: url('adb.png');
         }
         .nitro-badge { 
-            background-image: url('nitro-badge.png');
+            background-image: url('Nitro-badge.png');
         }
         .originally-known-badge { 
-            background-image: url('originally-known-badge.png');
+            background-image: url('oka.png');
         }
         .quest-badge { 
             background-image: url('quest-badge.png'); 
@@ -89,15 +88,14 @@
 
     <script>
         const profilePicture = document.getElementById('profile-picture');
-        const originalImage = 'discord_pfp.png';
-        const newImage = 'other_image.png';
+        const images = ['angry.png', 'discord_pfp.png', 'other_image.png'];
+        let currentImageIndex = 0;
+
+        profilePicture.style.backgroundImage = `url('${images[currentImageIndex]}')`;
 
         profilePicture.addEventListener('click', () => {
-            profilePicture.style.backgroundImage = `url('${newImage}')`;
-
-            setTimeout(() => {
-                profilePicture.style.backgroundImage = `url('${originalImage}')`;
-            }, 700);
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            profilePicture.style.backgroundImage = `url('${images[currentImageIndex]}')`;
         });
     </script>
 </body>
